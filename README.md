@@ -1,8 +1,14 @@
-<<<<<<< HEAD
 # vue-music
 
 > 音乐播放器
 
+## 效果图 ##
+![](https://github.com/chiqing85/vue-music/blob/master/image/QQ%E5%9B%BE%E7%89%8720190408145832.png?raw=true)
+<br/>
+![](https://github.com/chiqing85/vue-music/blob/master/image/QQ%E6%88%AA%E5%9B%BE20190408145939.png?raw=true)
+
+## 进度 ##
+>开发中……
 ## Build Setup
 
 ``` bash
