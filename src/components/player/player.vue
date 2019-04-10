@@ -117,7 +117,7 @@ import Lyric from 'lyric-parser'
               this.currentLyric.play()
             }
           } else {
-
+            this.lyrictext = '哦！悲剧勒，没有找到歌词！'
           }
         })
       },
