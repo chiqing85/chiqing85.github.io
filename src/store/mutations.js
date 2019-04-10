@@ -14,6 +14,10 @@ const matutaions = {
 
   [types.SET_LISTINDEX] (state, index) {
     state.ListIndex = index
+  },
+
+  [types.SET_PLAYSTATUS] (state, flag) {
+    state.playstatus = flag
   }
 }
 export default matutaions

@@ -22,18 +22,30 @@ module.exports = {
           '/apiRoutes': ''
         }
       },
-     '/apiDisc': {
+      '/apiDisc': {
         target: 'https://c.y.qq.com/qzone/fcg-bin/fcg_ucc_getcdinfo_byids_cp.fcg',
-       secure: false,
-       changeOrigin: true,
-       headers: {
-         Origin: 'https://y.qq.com',
+        secure: false,
+        changeOrigin: true,
+        headers: {
+          Origin: 'https://y.qq.com',
           referer: 'https://y.qq.com/n/yqq/playsquare/'
-       },
-       pathRewrite: {
+        },
+        pathRewrite: {
           '/apiDisc': ''
-       }
-     }
+        }
+      },
+      '/apilyric' : {
+        target: 'https://c.y.qq.com/lyric/fcgi-bin/fcg_query_lyric_new.fcg',
+        secure: false,
+        changeOrigin: true,
+        headers: {
+          Origin: 'https://y.qq.com',
+          referer:'https://y.qq.com'
+        },
+        pathRewrite: {
+          '/apilyric': ''
+        }
+      }
     },
 
     // Various Dev Server settings

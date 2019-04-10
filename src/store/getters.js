@@ -9,3 +9,5 @@ export let ListIndex = state => state.ListIndex
 export const currentSong = (state) => {
   return state.playList[state.ListIndex]|| {}
 }
+
+export let playstatus = state => state.playstatus
