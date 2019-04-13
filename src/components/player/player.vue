@@ -237,7 +237,6 @@ import PlayerList from '@/components/playerlist/playerlist'
     },
     watch:{
       currentSong( n, o) {
-
         console.log( this.currentSong)
         let curl = null
         this.audio.src = ''
@@ -483,7 +482,7 @@ import PlayerList from '@/components/playerlist/playerlist'
     }
     .min_title {
         float: left;
-        max-width: 66%;
+        max-width: 62%;
         overflow: hidden;
     }
     .min_progress {

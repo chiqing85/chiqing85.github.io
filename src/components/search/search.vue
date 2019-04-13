@@ -32,7 +32,7 @@
         </div>
         <div class="s_list" v-if="is">
             <ul class="search-list-ul">
-                <li class="search-list-li" v-for="(v, k) in result" @click="selectItem(k)">
+                <li class="search-list-li" v-for="(v, k) in result" @click="selectItem(v, k)">
                         <span class="media" v-if="v.type =='singer' ">
                             <img :src="`https://y.gtimg.cn/music/photo_new/T001R68x68M000${v.singermid}.jpg?max_age=2592000`" alt="">
                         </span>
@@ -136,11 +136,19 @@
         })
         return ret
       },
-      selectItem (k) {
-        this.selectPlay({
-          list: this._normalizeSongs(this.result),
-          k
-        })
+      selectItem (v, k) {
+        if( v.type == TYPE_SINGER) {
+          this.$router.push({
+            path: `/singer/${v.singermid}`
+          })
+          this.hidden()
+          this.setsingerinfo( v )
+        } else {
+            this.selectPlay({
+              list: this._normalizeSongs(this.result),
+              k
+            })
+        }
         this.cache()
       },
       tochinsh() {
@@ -178,6 +186,9 @@
         'saveSearchHistory',
         'delSearchHistory'
       ]),
+      ...mapMutations ({
+        setsingerinfo: 'SET_SINGER_INFO'
+      })
     },
     watch: {
      search() {

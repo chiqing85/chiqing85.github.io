@@ -38,6 +38,10 @@ const matutaions = {
 
   [types.SET_SEARCHHISTORY] (state, history) {
     state.searchHistory = history
+  },
+
+  [types.SET_SINGER_INFO] (state, list) {
+    state.singerinfo = list
   }
 }
 export default matutaions

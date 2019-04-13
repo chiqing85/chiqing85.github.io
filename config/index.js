@@ -69,6 +69,18 @@ module.exports = {
         pathRewrite: {
           '/apiTopList': ''
         }
+      },
+      '/apiSinger': {
+        target: 'https://u.y.qq.com/cgi-bin/musicu.fcg',
+        secure: true,
+        changeOrigin: true,
+        headers: {
+          Origin: 'https://y.qq.com',
+          referer: "https://y.qq.com/portal/singer_list.html",
+        },
+        pathRewrite: {
+          '/apiSinger': ''
+        }
       }
     },
 

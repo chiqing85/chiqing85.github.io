@@ -30,7 +30,6 @@
             </div>
             <div class="cfix" v-if="!this.$store.state.fullScreen"></div>
         </div>
-
     </div>
 </template>
 
@@ -64,7 +63,6 @@
           .then( (res) => {
             if( res.code === ERR_OK ) {
               this.ranklist = this._normalizeSongs( res['detail']['data']['songInfoList'] )
-
             }
           })
       },
@@ -72,6 +70,11 @@
         let ret = []
         list.forEach( (v) => {
           if( v.id && v.mid ) {
+            v['albumname'] = v.album.name
+            v['songname'] = v.name
+            v['songmid'] = v.mid
+            v['songid'] = v.mid
+            v['albummid'] = v.album.mid
             ret.push( getCdlist( v ) )
           }
         })
@@ -92,7 +95,6 @@
         'selectPlay',
         'playList'
       ])
-
     },
     computed: {
       title() {

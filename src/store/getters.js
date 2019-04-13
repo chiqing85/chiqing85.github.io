@@ -21,3 +21,5 @@ export let search = state => state.search
 export let searchHistory = state => state.searchHistory
 
 export let toplist = state => state.toplist
+
+export let singerinfo = state => state.singerinfo

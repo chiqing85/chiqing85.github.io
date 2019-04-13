@@ -25,7 +25,8 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'
+    import { mapGetters, mapActions } from 'vuex'
+    import {ListIndex} from '../../store/getters'
   export default {
     data() {
       return {
@@ -43,20 +44,19 @@
         this.$emit('select', k)
       },
       playerlistdeldel( k ) {
-        let arr = this.playList
-        arr.splice(k, 1)
-        let li = this.ListIndex
-        if ( this.ListIndex >  k ) {
-          // this.$emit('select', li - 1)
-        }
+        this.deleteSong( k )
       },
+      ...mapActions ( [
+        'selectPlay',
+        "deleteSong"
+      ])
     },
     computed: {
       ...mapGetters([
         "playList",
         "ListIndex"
         ])
-    }
+    },
   }
 </script>
 

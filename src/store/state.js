@@ -3,6 +3,7 @@ let state = {
   singer: {},
   disc: {},
   toplist: {},
+  singerinfo: {},
   playList: [],
   ListIndex: -1,
   playstatus: false,
