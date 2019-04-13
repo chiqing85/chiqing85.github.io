@@ -45,6 +45,30 @@ module.exports = {
         pathRewrite: {
           '/apilyric': ''
         }
+      },
+      '/apiSearchList' : {
+        target: 'https://c.y.qq.com/soso/fcgi-bin/search_for_qq_cp',
+        secure: false,
+        changeOrigin: true,
+        headers: {
+          Origin: 'https://y.qq.com',
+          referer:'https://y.qq.com'
+        },
+        pathRewrite: {
+          '/apiSearchList': ''
+        }
+      },
+      '/apiTopList': {
+        target: 'https://u.y.qq.com/cgi-bin/musicu.fcg',
+        secure: true,
+        changeOrigin: true,
+        headers: {
+          Origin: 'https://y.qq.com',
+          referer: "https://y.qq.com/n/m/detail/toplist/index.html",
+        },
+        pathRewrite: {
+          '/apiTopList': ''
+        }
       }
     },
 

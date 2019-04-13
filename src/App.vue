@@ -2,6 +2,7 @@
   <div id="app">
     <m-header></m-header>
     <router-view/>
+      <search></search>
       <player></player>
   </div>
 </template>
@@ -9,10 +10,13 @@
 <script>
 import MHeader from '@/components/m-header/m-header'
 import Player from '@/components/player/player'
+import Search from '@/components/search/search'
+
 export default {
   components: {
     MHeader,
-    Player
+    Player,
+    Search
   }
 }
 </script>
@@ -30,5 +34,8 @@ html,body {
   color: #2c3e50;
   margin: 0 auto;
   padding: 0;
+}
+.cfix {
+    height: 60px;
 }
 </style>

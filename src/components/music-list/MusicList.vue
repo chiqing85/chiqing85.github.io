@@ -21,7 +21,7 @@
                         <i class="material-icons">&#xe7ff;</i>
                         <span class="author_name" v-html="creator.name"></span>
                     </div>
-                    <p class="album">播放量：{{ listennum|line }}</p>
+                    <p class="album">播放量：{{ listennum|line }} </p>
                 </div>
             </div>
         </div>
@@ -33,21 +33,27 @@
                 <i class="material-icons blue">&#xe039;</i>
             </div>
         </div>
-            <div class="scroll">
-                <ul>
-                    <li v-for="item in MusicList.songlist" class="item">
-                        <div class="text">
-                            <h2 class="name">
-                                <span v-html="item.songname"></span>
-                            </h2>
-                            <p class="desc">
-                                <span>{{ item.singer[0].name}} · {{ item.songname }}</span>
-                            </p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+        <div class="scroll">
+            <ul>
+                <li v-for="(item,key) in MusicList.songlist" :class="item.songid === currentSong.id ? 'item active' : 'item'" @click="selectItem(key)">
+                    <span class="nume">
+                        <i class="material-icons" v-if="item.songid === currentSong.id">&#xe050;</i>
+                        <span v-else> {{ key + 1}}</span>
+                    </span>
+                    <div class="text">
+                        <h2 class="name">
+                            <span v-html="item.songname"></span>
+                        </h2>
+                        <p class="desc">
+                            <span>{{ item.singer[0].name}} · {{ item.songname }}</span>
+                        </p>
+                    </div>
+                </li>
+            </ul>
+            <div class="cfix" v-if="!this.$store.state.fullScreen"></div>
+        </div>
     </div>
+
 </template>
 
 <script>
@@ -57,12 +63,13 @@ import {getdisc} from '../../api/disc'
 import { ERR_OK } from '@/api/config'
 import Scroll from '@/layouts/scroll/scroll'
 import { getCdlist } from '@/common/js/song'
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   data () {
     return {
-      MusicList: []
+      MusicList: [],
+      items: -1
     }
   },
   props: {
@@ -83,6 +90,11 @@ export default {
     dissid: {
       default: ''
     }
+  },
+  computed: {
+    ...mapGetters([
+      "currentSong"
+    ])
   },
   // 生命钩子
   created () {
@@ -127,8 +139,15 @@ export default {
       })
       return ret
     },
+    selectItem( k ) {
+      this.selectPlay({
+        list: this._normalizeSongs(this.MusicList.songlist),
+        k
+      })
+    },
     ...mapActions([
-      'playList'
+      'playList',
+      'selectPlay'
     ])
   },
   // 自定义过滤器
@@ -160,12 +179,13 @@ export default {
     }
     .music-list {
         position: fixed;
-        z-index: 100;
         top: 0;
         left: 0;
         bottom: 0;
         right: 0;
         background: #fff;
+        overflow-y: scroll;
+        z-index: 100;
     }
     .back {
         position: absolute;
@@ -270,8 +290,15 @@ export default {
     }
     li.item {
         display: -webkit-box;
-        padding: 5px 20px 0 15px;
+        padding: 5px 20px 0 0;
         border-bottom: 1px solid #f0f1f2;
+    }
+
+    li.item span.nume {
+        display: block;
+        width: 40px;
+        height: 60px;
+        line-height: 60px;
     }
     .text {
         position: relative;
@@ -329,5 +356,12 @@ export default {
     .desc_play {
         float: right;
         line-height: .7;
+    }
+    span.nume>i {
+        font-size: 13px;
+        color: #ff8e99;
+    }
+    li.item.active .text span {
+        color: #ff8e99;
     }
 </style>

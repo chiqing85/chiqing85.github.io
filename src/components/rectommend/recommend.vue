@@ -29,6 +29,7 @@
                 </div>
               </li>
             </ul>
+        <div class="cfix" v-if="!this.$store.state.fullScreen"></div>
         </div>
       </scroll>
       <router-view/>
@@ -101,6 +102,7 @@ export default {
         width: 100%;
         top: 41px;
         bottom: 0;
+        overflow-y: scroll;
     }
     .recommend-content {
         height: 100%;

@@ -8,20 +8,35 @@
         <span class="tab-link">推荐</span>
       </router-link>
       <router-link tag="div" class="tab-item" to="/rank">
-        <span class="tab-link">排行</span>
+        <span class="tab-link">歌榜</span>
       </router-link>
       <router-link tag="div" class="tab-item" to="/singer">
         <span class="tab-link">歌手</span>
       </router-link>
     </div>
-    <div id="search" class="icon"><svg><use xlink:href="#icon-search">
-      <svg id="icon-search" viewBox="0 0 17 18" width="100%" height="100%"><path d="M12.775 14.482l3.371 3.372a.5.5 0 0 0 .708-.708l-3.372-3.37-1.817-1.818a.5.5 0 1 0-.707.707l1.817 1.817zM1 7.14a6 6 0 1 1 12 0 6 6 0 0 1-12 0zm13 0a7 7 0 1 0-14 0 7 7 0 0 0 14 0z"></path></svg></use></svg>
+    <div id="search" class="icon" @click="clicksearch">
+        <i class="material-icons">&#xe8b6;</i>
     </div>
   </div>
 </template>
 
 <script>
-export default { }
+  import { mapGetters, mapMutations } from 'vuex'
+export default {
+  computed: {
+    ...mapGetters([
+      'search'
+    ]),
+  },
+  methods: {
+    clicksearch() {
+      this.setsearch( !this.search )
+    },
+    ...mapMutations({
+      setsearch: 'SET_SEARCH'
+    })
+  }
+}
 </script>
 
 <style scoped>
@@ -75,6 +90,10 @@ export default { }
     float: right;
     width: 50px;
     height: 40px;
+  }
+  #search>i {
+      font-size: 25px;
+     line-height: 40px;
   }
   .router-link-active {
     font-weight: bold;
