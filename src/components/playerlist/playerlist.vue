@@ -5,7 +5,10 @@
             <div class="list" @click.stop>
                 <div class="listtop">
                     <div class="list-top-l">播放列表</div>
-                    <div class="list-top-r"> 清空</div>
+                    <div class="list-top-r" @click.stop="plistd">
+                        <span>清空</span>
+                        <i class="shdic material-icons">&#xe872;</i>
+                    </div>
                 </div>
                 <div class="list-wraper">
                     <li v-for="(item, key) in playList" class="listitem" :class="key === ListIndex ? 'active' : ''" @click.stop="selectItem(key)">
@@ -21,11 +24,10 @@
             </div>
         </div>
     </transition>
-
 </template>
 
 <script>
-    import { mapGetters, mapActions } from 'vuex'
+    import { mapGetters, mapActions, mapMutations } from 'vuex'
     import {ListIndex} from '../../store/getters'
   export default {
     data() {
@@ -46,6 +48,16 @@
       playerlistdeldel( k ) {
         this.deleteSong( k )
       },
+      plistd() {
+        this.steplayList( [] )
+        this.setlistindex( -1 )
+        this.setplaystatus( false )
+      },
+      ...mapMutations( {
+          steplayList: 'SET_PLAYLIST',
+          setlistindex: 'SET_LISTINDEX',
+          setplaystatus : 'SET_PLAYSTATUS'
+        } ),
       ...mapActions ( [
         'selectPlay',
         "deleteSong"
@@ -65,7 +77,7 @@
      transition: opacity 0.3s
  }
  .PlayerList-leave-active .list-wrapper, .PlayerList-enter-active .list-wrapper {
-     transition: all 0.3s
+     transition: all 0.5s
  }
   .PlayerList-enter, .PlayerList-leave-to {
       opacity: 0;
@@ -159,4 +171,8 @@
          opacity: .6;
          color: #333;
      }
+ i.shdic.material-icons {
+     float: right;
+     font-size: 16px;
+ }
 </style>

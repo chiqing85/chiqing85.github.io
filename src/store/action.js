@@ -26,15 +26,11 @@ export let delSearchHistory = function ( { commit}, v) {
 export let deleteSong = function ( {commit, state}, k) {
   let pl = state.playList,
       index = state.ListIndex
-
       pl.splice( k, 1)
-
       if( index > k ) {
         index --
       }
-
     commit( types.SET_PLAYSTATUS, pl)
     commit( types.SET_LISTINDEX, index)
-
-
+    commit( types.SET_PLAYSTATUS, true)
 }

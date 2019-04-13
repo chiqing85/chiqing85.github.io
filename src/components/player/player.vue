@@ -28,12 +28,18 @@
                             <i class="material-icons" @click="PlayMuteds" v-html="volume"></i>
                         </div>
                         <div class="play_progress">
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-success" role="progressbar"
+                            <div class="progress" ref="progress">
+                                <div class="progress-bar progress-bar-success" ref="progressBar"
                                      aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
                                      :style="{width: progressw + '%'}">
                                 </div>
-                                <div class="progress-dot" :style="{left: progressw + '%' }"></div>
+                                <div class="progress-dot"
+                                     @touchstart.prevent="PTouchStart"
+                                     @touchmove.prevent="PTouchMove"
+                                     @touchend.prevent="PTocudhEnd"
+                                     :style="{left: progressw + '%' }"
+                                     ref="progressdot"
+                                ></div>
                             </div>
                             <div class="progress-l" v-html="seconds( currentTime) "></div>
                             <div class="progress-r" v-html="seconds( currentSong.interval )"></div>
@@ -88,7 +94,7 @@ import { ERR_OK } from '@/api/config'
 import {Base64 } from 'js-base64'
 import Lyric from 'lyric-parser'
 import PlayerList from '@/components/playerlist/playerlist'
-
+const progressBtnWidth = 16
   export default {
   data() {
     return {
@@ -99,6 +105,9 @@ import PlayerList from '@/components/playerlist/playerlist'
         lyrictext: '',
         volumes: true
     }
+  },
+  created() {
+    this.touch = {}
   },
     mounted() {
         this.audio = new Audio();
@@ -126,6 +135,16 @@ import PlayerList from '@/components/playerlist/playerlist'
       ])
     },
     methods: {
+      // 按下屏幕事件
+      PTouchStart( e) {
+      },
+      // 在屏幕上移动
+      PTouchMove (e ) {
+      },
+      // 从屏幕上抬起手指操作
+      PTocudhEnd( e ) {
+        this.touch.initiated = false
+      },
       back () {
         this.setFullScreen(false)
       },
@@ -215,7 +234,7 @@ import PlayerList from '@/components/playerlist/playerlist'
       ...mapMutations({
         setPlaystatusState: 'SET_PLAYSTATUS',
         setCurrentIndex: 'SET_LISTINDEX',
-        setFullScreen: 'SET_FULLSCREEN'
+        setFullScreen: 'SET_FULLSCREEN',
       }),
       async _play( ) {
         for (let i = 0; i < 3; i++) {
@@ -231,13 +250,17 @@ import PlayerList from '@/components/playerlist/playerlist'
               }
             })
           }
-
         }
       }
     },
     watch:{
       currentSong( n, o) {
-        console.log( this.currentSong)
+        if(!n.id) {
+          return
+        }
+        if(n.id == o.id) {
+          return
+        }
         let curl = null
         this.audio.src = ''
         if( this.playstatus ) {
@@ -501,6 +524,9 @@ import PlayerList from '@/components/playerlist/playerlist'
         font-size: 80%;
         opacity: .6;
         color: #333;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
     }
     .min_info>.play_progress {
         margin: 0 auto 0;
