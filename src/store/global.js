@@ -1,0 +1,22 @@
+// 全局变量
+export let SET_SINGER = 'SET_SINGER'
+
+export let SET_DISC = 'SET_DISC'
+
+export let SET_PLAYLIST = 'SET_PLAYLIST'
+
+export let SET_LISTINDEX = 'SET_LISTINDEX'
+
+export let SET_PLAYSTATUS = 'SET_PLAYSTATUS'
+
+export let SET_PLAYMUTED = 'SET_PLAYMUTED'
+
+export let SET_FULLSCREEN = 'SET_FULLSCREEN'
+
+export let SET_SEARCH = 'SET_SEARCH'
+
+export let SET_SEARCHHISTORY = 'SET_SEARCHHISTORY'
+
+export let SET_TOPLIST = 'SET_TOPLIST'
+
+export let SET_SINGER_INFO = 'SET_SINGER_INFO'
