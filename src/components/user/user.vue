@@ -130,7 +130,7 @@
     border-bottom: 1px solid #ff8e99;
   }
   .user_list_li {
-    width: 220px;
+    width: 222px;
     margin: 5px 10px;
     text-align: left;
     border-bottom: 1px solid #f0f1f2;

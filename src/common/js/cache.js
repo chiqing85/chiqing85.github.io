@@ -1,6 +1,5 @@
 const storage = window.localStorage
      ,SEARCH_KEY = 'SearchHistory',
-<<<<<<< HEAD
      SET_PLAYLISTHISTORY = 'PlHistory',
     SEARCH_MAXLEN = 10
 
@@ -9,17 +8,7 @@ export function  GetSearch( key ) {
 }
 
 export function DelSearch ( v ) {
-  let sear = GetSearch( SEARCH_KEY )
-=======
-    SEARCH_MAXLEN = 10
-
-export function  GetSearch() {
-  return  storage[SEARCH_KEY] ?  JSON.parse( storage[SEARCH_KEY] ) :  []
-}
-
-export function DelSearch ( v ) {
   let sear = GetSearch()
->>>>>>> 8692f0e858d4448b9e8ce5a174a10a2e2c79461a
   if( v === undefined ) {
     storage.removeItem( SEARCH_KEY )
     sear = []
@@ -31,25 +20,12 @@ export function DelSearch ( v ) {
 }
 
 export function s_history ( v ) {
-<<<<<<< HEAD
   let searchkeylist  = GetSearch( SEARCH_KEY )
   insertArray(searchkeylist, v, (item) => {
     return item === v
   }, SEARCH_MAXLEN )
   storage[SEARCH_KEY] = JSON.stringify( searchkeylist )
   return searchkeylist
-=======
-  let searchkeylist  = GetSearch()
-
-  insertArray(searchkeylist, v, (item) => {
-    return item === v
-  }, SEARCH_MAXLEN )
-
-  storage[SEARCH_KEY] = JSON.stringify( searchkeylist )
-
-  return searchkeylist
-
->>>>>>> 8692f0e858d4448b9e8ce5a174a10a2e2c79461a
 }
 
 function insertArray ( arr, val, compare, maxlen ) {
@@ -67,7 +43,6 @@ function insertArray ( arr, val, compare, maxlen ) {
   }
 }
 
-<<<<<<< HEAD
 export function splisth( v ) {
   let plhi = GetSearch(SET_PLAYLISTHISTORY)
   insertArrays( plhi, v, ( item ) => {
@@ -84,6 +59,3 @@ function insertArrays( arr, v, compare, mx) {
   arr.unshift( v )
   if (mx && arr.length > mx ) arr.pop()
 }
-
-=======
->>>>>>> 8692f0e858d4448b9e8ce5a174a10a2e2c79461a

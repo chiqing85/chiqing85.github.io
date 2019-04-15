@@ -1,10 +1,6 @@
 <template>
   <div id="header">
-<<<<<<< HEAD
     <div id="openGuide" @click="ushow">
-=======
-    <div id="openGuide">
->>>>>>> 8692f0e858d4448b9e8ce5a174a10a2e2c79461a
       <span class="Guide"></span>
     </div>
     <div class="tab">
@@ -29,30 +25,20 @@
 export default {
   computed: {
     ...mapGetters([
-<<<<<<< HEAD
       'search',
       'users'
-=======
-      'search'
->>>>>>> 8692f0e858d4448b9e8ce5a174a10a2e2c79461a
     ]),
   },
   methods: {
     clicksearch() {
       this.setsearch( !this.search )
     },
-<<<<<<< HEAD
-
     ushow() {
-      this.setusers( !this.user )
+      this.setusers( !this.users )
     },
     ...mapMutations({
       setsearch: 'SET_SEARCH',
       setusers: 'SET_USERS'
-=======
-    ...mapMutations({
-      setsearch: 'SET_SEARCH'
->>>>>>> 8692f0e858d4448b9e8ce5a174a10a2e2c79461a
     })
   }
 }

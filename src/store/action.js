@@ -1,13 +1,11 @@
 import * as  types from './global'
 import { s_history, DelSearch, splisth } from '@/common/js/cache'
-
 export let playList = function ({commit}, {list}) {
   commit( types.SET_PLAYLIST, list)
   commit( types.SET_LISTINDEX, 0)
   commit( types.SET_PLAYSTATUS, true)
   commit( types.SET_FULLSCREEN, true)
 }
-
 export let selectPlay = function ({commit, state}, {list, k}) {
   commit(types.SET_PLAYLIST, list)
   commit( types.SET_LISTINDEX, k)

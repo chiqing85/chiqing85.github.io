@@ -10,6 +10,7 @@ let state = {
   PlayMuted: 0.3,
   fullScreen: false,
   search: false,
+  users: false,
   searchHistory: GetSearch( 'SearchHistory'),
   PlayListHistory: GetSearch( 'PlHistory')
 }
