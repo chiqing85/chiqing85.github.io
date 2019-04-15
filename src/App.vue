@@ -21,7 +21,8 @@ export default {
     MHeader,
     Player,
     Search,
-    User
+    User,
+    Search
   }
 }
 </script>
