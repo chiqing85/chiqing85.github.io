@@ -266,7 +266,7 @@ export default {
         max-height: 47px;
     }
     .album__name h1 {
-        font-size: .68rem;
+        font-size: 1.5rem;
         font-weight: 600;
         line-height: 1.3;
         white-space: nowrap;

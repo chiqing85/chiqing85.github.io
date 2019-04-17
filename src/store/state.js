@@ -7,7 +7,7 @@ let state = {
   playList: [],
   ListIndex: -1,
   playstatus: false,
-  PlayMuted: 0.3,
+  PlayMuted: 0.5,
   fullScreen: false,
   search: false,
   users: false,

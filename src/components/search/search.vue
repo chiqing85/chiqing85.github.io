@@ -266,7 +266,7 @@
         box-shadow: unset;
     }
     .s_hidden {
-        font-size: .875rem;
+        font-size: 1.3575rem;
         line-height: 2rem;
         position: absolute;
         top: 0;
@@ -290,10 +290,9 @@
     }
     span.tag_s {
         position: relative;
-        font-size: .8125rem;
-        line-height: 1.6875rem;
+        font-size: 1.325rem;
         display: inline-block;
-        padding: 0 .625rem;
+        padding: 0.3rem 0.625rem;
         text-align: center;
         border: 1px solid;
         border-radius: 99px;

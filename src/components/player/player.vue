@@ -17,11 +17,11 @@
                             <img :src="currentSong.image" alt="">
                         </div>
                     </div>
-                    <!-- 歌词 -->
-                    <div class="lyric_wrap">
-                        <div class="lyric" v-html="lyrictext"></div>
-                    </div>
                     <div class="bottom">
+                      <!-- 歌词 -->
+                      <div class="lyric_wrap">
+                        <div class="lyric" v-html="lyrictext"></div>
+                      </div>
                         <div class="play_top">
                             <i class="glyphicon glyphicon-random micons"></i>
                             <i class="material-icons">&#xe87e;</i>
@@ -347,8 +347,18 @@ const progressBtnWidth = 16
     .middle {
         position: absolute;
         width: 100%;
-        margin: 80px auto 10px;
+        height: 100vh;
+        min-height: 500px;
         overflow: hidden;
+    }
+    .cd_wrap {
+      position: absolute;
+      display: block;
+      top: 40%;
+      left: 50%;
+      text-align: center;
+      transform: translate(-50%,-60%);
+      padding-bottom: 2rem;
     }
     .cd {
         position: relative;
@@ -386,7 +396,8 @@ const progressBtnWidth = 16
     .cd::before {
         width: 48px;
         height: 48px;
-        background: #ffffffe0;
+        background-color: #ffffff;
+        opacity: 0.93;
         border: 3px solid #1f1f1f;
         z-index: 10;
     }
@@ -557,6 +568,12 @@ const progressBtnWidth = 16
     .min_list_icon {
         font-size: 25px;
         line-height: 60px;
+    }
+
+    .bottom {
+      bottom: 10px;
+      position: absolute;
+      width: 100%;
     }
 
     @-webkit-keyframes rotate{
